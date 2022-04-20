@@ -1,0 +1,58 @@
+#include <iostream> 
+#include <fstream>
+#include <windows.h>
+#include <stdlib.h>
+#include <cstdlib>
+using namespace std;
+
+int menu() 
+{
+	int opcion;
+	system ("cls");
+		 cout << "\n     ***************** Inventario de una libreria *****************\n\n"<<endl;
+		 cout<<"\n  MENU PRINCIPAL\n"<<endl; 
+		 cout<< "  1. Ingresar nuevo Articulo"<<endl; 
+         cout<< "  2. Consultar Articulo existente"<<endl;
+         cout<< "  3. Modificar Articulo existente" <<endl; 
+		 cout<< "  4. Eliminar Articulo existente"<<endl;
+	     cout<< "  5. Editar Articulos existentes\n"<<endl;
+         cout<<"  Nota: Para guardar los registros es necesario al final seleccionar la opcion: "<<endl; 
+		 cout<< "  6. Guardar registros y Salir del sistema" <<endl;
+		 cin>>opcion;
+		 
+		 return opcion;
+}
+
+void agregar (ofstream &es)
+
+{
+	system ("cls");	
+	
+	string articulo;
+	 es.open("Articulos Libreria.txt", ios::out  |   ios::app);
+	 cout<<"Articulo"<<endl;
+	 cin>>articulo;
+	 es<<articulo<<endl;
+	 es.close ();
+}
+
+		int main()
+		{
+			ofstream Esc;
+			int x;
+			do {
+					system ("cls");
+					x = menu();	
+					
+					switch (x)
+					{
+						case 1:
+							agregar(Esc);
+							break;
+					}
+					
+			   } 
+			while (x != 6);   
+			return 0;
+		}	
+
