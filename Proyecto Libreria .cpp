@@ -28,18 +28,18 @@ int menu()
          cout<< " * 2. Consultar Articulo existente                                        *"<<endl;
          cout<< " * 3. Buscar Articulo existente                                           *"<<endl; 
          cout<< " * 4. Modificar Articulos existentes                                      *"<<endl;
-		 cout<< " * 5. vender articulo                                                     *"<<endl;
-		 cout<< " * 5. eliminar articul0                                                   *"<<endl; 
+		 cout<< " * 5. Vender articulo                                                     *"<<endl;
+		 cout<< " * 6. Eliminar articulo                                                   *"<<endl; 
 		 cout<< " * 7. Guardar registros y Salir del sistema                               *"<<endl;
 		 cout<< " **************************************************************************"<<endl;
 		 cout<< " *Elija una opcion                                       *                *"<<endl;
 		 cout<< " **************************************************************************"<<endl;
 		 
-		gotoxy(65,13); cin>>opcion;
+		gotoxy(65,14); cin>>opcion;
 		 
 		 return opcion;
 }
-// En este bloque, se da la opcion de no registrar un articulo con el codigo igual, es decir, que no se tomar·n en cuenta. 
+// En este bloque, se da la opcion de no registrar un articulo con el codigo igual, es decir, que no se tomar√°n en cuenta. 
 bool verifica(string Codigo)
 {
 	ifstream leer("Articulos Libreria.txt", ios::in);
@@ -53,7 +53,6 @@ bool verifica(string Codigo)
 	
 	while (!leer.eof())
 	{
-		leer>>codigo;
 		leer>>articulo;
 		leer>>precioCompra;
 		leer>>precioVenta;
@@ -64,11 +63,12 @@ bool verifica(string Codigo)
 			leer.close();
 			return false;
 		}
+		leer>>codigo;
 	}
 	leer.close();
 		return true;
 }
-//En est· parte saldr· la interfaz al seleccionar la opcion 1, que es la de AÒadir archivos.
+//En est√° parte saldr√° la interfaz al seleccionar la opcion 1, que es la de A√±adir archivos.
 void agregar (ofstream &es) 
 
 {
@@ -98,7 +98,7 @@ void agregar (ofstream &es)
 	 es.close ();
 }
 
-//Este bloque de cÛdigo permitir· al usuario ver los registros de los articulos ya ingresados.
+//Este bloque de c√≥digo permitir√° al usuario ver los registros de los articulos ya ingresados.
 void verArticulos(ifstream & Lec)
 {
 	
@@ -111,7 +111,7 @@ void verArticulos(ifstream & Lec)
 	string Cantidad;
 	
 	Lec.open ("Articulos Libreria.txt", ios::in);
-	if(Lec.is_open()) //Se lee si el archivo o funciÛn ingresados existen.
+	if(Lec.is_open()) //Se lee si el archivo o funci√≥n ingresados existen.
 	{
 		    cout<<"   *                           Articulos Registrados                           *"<<endl;
 			cout<<"   ***************************************************************************** "<<endl;
@@ -141,7 +141,7 @@ void verArticulos(ifstream & Lec)
 	o=0;
 	}
 	else 
-	cout<<"Error al abrir el archivo"<<endl; //Se tira el mensaje de que si el archivo o funcion ingresados no existen, tirar· un mensaje de error.
+	cout<<"Error al abrir el archivo"<<endl; //Se tira el mensaje de que si el archivo o funcion ingresados no existen, tirar√° un mensaje de error.
 			
 	system("pause");
 }
@@ -328,8 +328,6 @@ void eliminar(ifstream &Lec)
 	string Articulo;
 	string Precioventa;
 	string Preciocompra;
-	string Comprass;
-	string Ventass;	
 	string Cantidad;
 	string codaux;
 	
@@ -351,8 +349,6 @@ void eliminar(ifstream &Lec)
 			Lec>>Articulo;
 			Lec>>Preciocompra;
 			Lec>>Precioventa;
-			Lec>>Comprass;
-    	 	Lec>>Ventass;
 			Lec>>Cantidad;
 			
 			if(codaux == Codigo)
@@ -363,7 +359,7 @@ void eliminar(ifstream &Lec)
 			}
 			else
 			{
-				aux<<Codigo<<" "<<Articulo<<" "<<Preciocompra<<" "<<Precioventa<<" "<<Comprass<<" "<<Ventass<<" "<<Cantidad<<"\n";
+				aux<<Codigo<<" "<<Articulo<<" "<<Preciocompra<<" "<<Precioventa<<" "<<Cantidad<<"\n";
 			}
 			Lec>>Codigo;
 		}
@@ -379,7 +375,7 @@ void eliminar(ifstream &Lec)
 }
 
 
-//Est· parte del codigo es donde se regitra la opcion, por medio de un switch.
+//Est√° parte del codigo es donde se regitra la opcion, por medio de un switch.
 		int main()
 		{
 			ofstream Esc;
@@ -417,4 +413,5 @@ void eliminar(ifstream &Lec)
 			while (x != 7);   
 			return 0;
 		}	
+
 
